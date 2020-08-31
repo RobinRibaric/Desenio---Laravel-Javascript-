@@ -11,7 +11,9 @@
 
 <body>
     <div class="main-container">
-        <button class="button" type="button">Your country?</button>
+        <div class="top half"></div>
+        <button class="button" type="button">Click here</button>
+        <div class="bottom half"></div>
     </div>
 </body>
 
