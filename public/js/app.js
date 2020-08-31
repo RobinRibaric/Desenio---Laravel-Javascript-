@@ -2107,15 +2107,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
 var button = document.querySelector('.button');
-button.addEventListener('click', function () {
-  button.innerHTML = 'loading...';
-  axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/getCountry').then(function (_ref) {
-    var data = _ref.data;
-    button.innerHTML = data;
-  })["catch"](function () {
-    button.innerHTML = 'Failed to get location!';
+
+window.onload = function () {
+  button.addEventListener('click', function () {
+    button.innerHTML = 'loading...';
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/getCountry').then(function (_ref) {
+      var data = _ref.data;
+      button.innerHTML = data;
+    })["catch"](function () {
+      button.innerHTML = 'Failed to get location!';
+    });
   });
-});
+};
 
 /***/ }),
 
