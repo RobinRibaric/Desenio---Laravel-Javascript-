@@ -8,7 +8,7 @@ class LocationController extends Controller
 {
     public function location()
     {
-        $ip = $_SERVER['REMOTE_ADDR'];
+        $ip = getIPAddress();
 
         if (!validateIP($ip)) {
             $ip = '24.48.0.1';
@@ -25,4 +25,19 @@ class LocationController extends Controller
 function validateIP($ip)
 {
     return filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE);
+}
+
+function getIPAddress()
+{
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    } else {
+
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
 }
