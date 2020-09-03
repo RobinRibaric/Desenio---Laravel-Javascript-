@@ -16,9 +16,9 @@ class LocationController extends Controller
 
         $response = json_decode(file_get_contents("http://ip-api.com/json/$ip"), true);
 
-        if ($response['status'] === 'success' && $response['country']) return response($response['country'], 200);
+        if ($response['status'] === 'success' && $response['country']) return view('home', ['country' => $response['country']]);
 
-        return response('Failed to Fetch!', 404);
+        return view('home', ['error' => 'Failed to fetch']);
     }
 }
 

@@ -12,7 +12,15 @@
 <body>
     <div class="main-container">
         <div class="top half"></div>
-        <button class="button" type="button">Click here</button>
+        <a href="/getCountry"><button type="button" class="button">
+                @if(empty($country))
+                click here
+                @elseif(!empty($error))
+                {{$error}}
+                @else
+                {{$country}}
+                @endif
+            </button></a>
         <div class="bottom half"></div>
     </div>
 </body>
